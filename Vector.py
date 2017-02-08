@@ -26,13 +26,14 @@ class Vector:
     def __sub__(self, other):
         v1 = self.get()
         v2 = other.get()
-
-        
         self.x = v1[0]-v2[0]
         self.y = v1[1]-v2[1]
-        self.z = v1[2]-v2[2]
-        
-        return (self.x, self.y, self.z)
+        if self.z!=None:
+            self.z = v1[2]-v2[2]
+            subTup = (self.x,self.y,self.z)
+        else:
+            subTup = (self.x,self.y)
+        return subTup
 
     def __mul__(self, other):
         v1 = self.get()
@@ -41,12 +42,9 @@ class Vector:
         
         self.x = v2[0]*v1[0]
         self.y = v2[1]*v1[1]
-        self.z = v2[2]*v1[2]
-        
-        return self.x + self.y + self.z
-
-    
-        
-
-
-
+        if self.z!=None:
+            self.z = v2[2]*v1[2]
+            multiple = self.x+self.y+self.z
+        else:
+            multiple = self.x+self.y
+        return multiple
